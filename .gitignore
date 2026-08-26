@@ -1,0 +1,35 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+
+# The dataset archive and extracted clinical images are distributed separately.
+data/FABLE-500/
+data/*.zip
+data/*.tar
+data/*.tar.gz
+
+# Runtime outputs can be regenerated.
+benchmark/inputs/*.jsonl
+benchmark/inputs/*.json
+benchmark/outputs/*
+!benchmark/outputs/.gitkeep
+benchmark/logs/
+benchmark/analysis/*
+!benchmark/analysis/.gitkeep
+figures/
+
+# Do not commit manuscript files or private review materials.
+*.docx
+*.pdf
+*.pptx
+*_private*
+*private*
+*internal*
+*audit*
+*review*
+*doctor*
+*mapping*

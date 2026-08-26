@@ -1,0 +1,2 @@
+{"case_id":"C_EXAMPLE","patient_id":"P_EXAMPLE","split":"test","reference_diagnosis":"Cataract","candidate_labels":["Cataract","Vitreous hemorrhage","High myopia","Refractive error","Retinal detachment"],"age":65,"sex":"Female","same_day_fundus_bscan":true,"fundus_image_paths":["images/fundus/P_EXAMPLE/fundus_01.jpg"],"bscan_image_paths":["images/bscan/P_EXAMPLE/bscan_01.jpg"],"n_fundus_images":1,"n_bscan_images":1,"bscan_finding":"Example de-identified B-scan finding text.","bscan_impression":"Example de-identified B-scan impression text."}
+
