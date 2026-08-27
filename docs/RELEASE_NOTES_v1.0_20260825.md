@@ -2,6 +2,10 @@
 
 Release date: 2026-08-25
 
+Dataset archive: https://zenodo.org/records/22119619
+
+Release archive: `FABLE-500_v1.0_20260825.zip`
+
 ## Frozen Package
 
 - Package directory: `FABLE-500`

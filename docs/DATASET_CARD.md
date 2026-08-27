@@ -10,6 +10,10 @@ patient-level reference diagnosis category derived from clinical records. The
 default metadata is English for international reuse and benchmark
 reproducibility. The diagnosis label is not an eye-level lesion annotation.
 
+Dataset archive: https://zenodo.org/records/22119619
+
+Release archive: `FABLE-500_v1.0_20260825.zip`
+
 ## Composition
 
 - Total cases: 500
@@ -19,6 +23,17 @@ reproducibility. The diagnosis label is not an eye-level lesion annotation.
 - Diagnostic categories: 5
 - Cases per category: 100
 - Split: 300 train, 100 validation, 100 test
+
+## Curation Summary
+
+FABLE-500 was curated from a strict eligible pool of 8,740 same-day multimodal
+case records from 6,262 unique patients. Eligible cases required same-day
+fundus and B-scan images, nonempty structured B-scan finding and impression
+fields, one patient-level diagnosis label, valid public image paths, and one
+B-scan examination source. Cases with postoperative status, uncertain
+impressions, laterality text-image mismatch, multiple source diagnosis labels,
+or multiple same-day B-scan examination records were excluded or replaced by
+eligible same-disease candidates.
 
 ## Data Fields
 

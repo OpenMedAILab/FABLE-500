@@ -1,8 +1,8 @@
 # FABLE-500
 
 FABLE-500 (Fundus And B-scan Linked Evaluation) is a same-day multimodal
-ophthalmic dataset and benchmark for evaluating vision-language models on
-patient-level diagnosis classification.
+ophthalmic dataset and benchmark for evaluating vision-language and
+workflow-based AI systems on patient-level diagnosis classification.
 
 This repository contains the public code used for metadata validation,
 benchmark input export, API-based model evaluation, metric analysis, and figure
@@ -12,13 +12,9 @@ generation. The de-identified dataset archive is distributed separately.
 
 ## Dataset
 
-Dataset archive: Zenodo link pending.
+Dataset archive: https://zenodo.org/records/22119619
 
-Temporary manuscript placeholder:
-
-```text
-https://zenodo.org/records/FABLE-500-V1-PLACEHOLDER
-```
+Release archive: `FABLE-500_v1.0_20260825.zip`
 
 After downloading the dataset archive, extract it as:
 
@@ -41,6 +37,79 @@ images/bscan/
 
 The dataset itself is released for research use under CC BY-NC 4.0. See the
 dataset archive for the official data license and citation information.
+
+## Study Design
+
+FABLE-500 was constructed as a benchmark-oriented, same-day, patient-level,
+class-balanced ophthalmic data resource. The release was curated from a strict
+eligible pool of 8,740 same-day multimodal case records from 6,262 unique
+patients. Eligible cases required:
+
+- same-day ultra-widefield fundus and ophthalmic B-scan images;
+- nonempty structured B-scan finding and impression fields;
+- one curated patient-level diagnosis label;
+- valid public image paths and one B-scan examination source.
+
+Records with postoperative status, uncertain impressions, laterality
+text-image mismatch, multiple source diagnosis labels, or multiple same-day
+B-scan examination records were excluded or replaced. The final release contains
+500 unique patient-level cases, sampled as 100 cases for each of five diagnosis
+categories and assigned to fixed patient-level train/validation/test splits.
+
+## Dataset Characteristics
+
+| Characteristic | Value |
+|---|---:|
+| Cases | 500 |
+| Unique public patient IDs | 500 |
+| Fundus images | 1,059 |
+| B-scan images | 1,436 |
+| Total images | 2,495 |
+| Diagnosis categories | 5 |
+| Cases per category | 100 |
+| Split | 300 train / 100 validation / 100 test |
+
+Diagnosis categories:
+
+- Cataract
+- Vitreous hemorrhage
+- High myopia
+- Refractive error
+- Retinal detachment
+
+Each released case includes relative paths to all released fundus and B-scan
+images, English B-scan finding and impression fields, a patient-level reference
+diagnosis label, public identifiers, split assignment, age, sex, and image
+counts. Original Chinese diagnosis, sex, B-scan finding, and B-scan impression
+fields are provided in a companion workbook keyed by public identifiers.
+
+## Reference Benchmark
+
+The repository reproduces the API-based reference benchmark reported in the
+manuscript. The benchmark evaluates fixed diagnosis classification on the
+100-case test split. It is intended as a reproducible reference for input
+ablation, model-family sensitivity, and workflow-based evaluation rather than
+as a clinical deployment benchmark.
+
+Primary GPT-5.6 Sol reference benchmark:
+
+| Input setting | Accuracy (95% CI) | Macro-F1 (95% CI) |
+|---|---:|---:|
+| Report-text only | 0.39 (0.30-0.49) | 0.31 (0.24-0.37) |
+| Fundus only | 0.38 (0.29-0.48) | 0.37 (0.27-0.46) |
+| B-scan only | 0.25 (0.17-0.34) | 0.21 (0.14-0.28) |
+| Fundus+B-scan image only | 0.35 (0.26-0.44) | 0.32 (0.22-0.41) |
+| Full case multimodal | 0.40 (0.30-0.50) | 0.31 (0.24-0.37) |
+| Four-stage workflow-based comparator | 0.40 (0.31-0.50) | 0.35 (0.26-0.43) |
+
+Full-case model-family sensitivity:
+
+| Model | Accuracy (95% CI) | Macro-F1 (95% CI) |
+|---|---:|---:|
+| GPT-5.6 Sol | 0.40 (0.30-0.50) | 0.31 (0.24-0.37) |
+| Gemini 3.7 Flash | 0.52 (0.42-0.62) | 0.52 (0.42-0.60) |
+| Claude Sonnet 5 | 0.33 (0.24-0.43) | 0.26 (0.18-0.33) |
+| Qwen3.7 Plus | 0.43 (0.34-0.53) | 0.35 (0.28-0.40) |
 
 ## Installation
 
